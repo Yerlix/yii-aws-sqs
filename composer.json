@@ -1,21 +1,18 @@
 {
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "yerlix/yii-aws-sqs",
-        "version": "dev-master",
-        "source": {
-          "url": "git@github.com:Yerlix/yii-aws-sqs.git",
-          "type": "git",
-          "reference": "master"
-        },
-        "autoload": {
-          "psr-0": {
-            "yerlix\\yii-aws-sqs": ""
-          }
-        }
+  "type": "package",
+  "package": {
+    "name": "yerlix/yii-aws-sqs",
+    "description": "Forked repo",
+    "version": "dev-master",
+    "source": {
+      "url": "git@github.com:Yerlix/yii-aws-sqs.git",
+      "type": "git",
+      "reference": "master"
+    },
+    "autoload": {
+      "psr-0": {
+        "yerlix\\yii-aws-sqs": ""
       }
     }
-  ]
+  }
 }
