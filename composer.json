@@ -1,6 +1,6 @@
 {
   "name": "yerlix/yii-aws-sqs",
   "description": "Forked repo",
-  "version": "1.0.2",
-  "type": "package"
+  "version": "1.0.3",
+  "type": "library"
 }
