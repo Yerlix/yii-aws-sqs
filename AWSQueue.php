@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AWSQueue
  */
@@ -19,10 +20,11 @@ class AWSQueue extends CModel
      */
     private $_url;
 
-    public function __construct($url=null)
+    public function __construct($url = null)
     {
-        if($url!==null)
+        if ($url !== null) {
             $this->url = $url;
+        }
     }
 
     /**
@@ -47,11 +49,11 @@ class AWSQueue extends CModel
     public function setUrl($url)
     {
         $p = parse_url($url);
-        if(isset($p['path'])) {
-            $path = explode('/',$p['path']);
+        if (isset($p['path'])) {
+            $path = explode('/', $p['path']);
             $this->_name = array_pop($path);
         }
-        $this->_url=$url;
+        $this->_url = $url;
     }
 
     /**
@@ -59,7 +61,7 @@ class AWSQueue extends CModel
      */
     public function attributeNames()
     {
-        return array('name','url');
+        return ['name', 'url'];
     }
 
     /**
@@ -67,60 +69,68 @@ class AWSQueue extends CModel
      */
     private function sqs()
     {
-        if(self::$sqs!==null)
+        if (self::$sqs !== null) {
             return self::$sqs;
-        else {
-            self::$sqs=Yii::app()->sqs;
-            if(self::$sqs instanceof AWSQueueManager)
+        } else {
+            self::$sqs = Yii::app()->sqs;
+            if (self::$sqs instanceof AWSQueueManager) {
                 return self::$sqs;
-            else
-                throw new CException(Yii::t('yii','AWSQueue requires a "sqs" AWSQueueManager application component.'));
+            } else {
+                throw new CException(Yii::t('yii', 'AWSQueue requires a "sqs" AWSQueueManager application component.'));
+            }
         }
     }
 
     /**
      * @param $message mixed message to add to the queue
      * @param $options array options for this message
+     *
      * @return boolean if added with success
      */
-    public function send($message, $options=array())
+    public function send($message, $options = [])
     {
-        if($this->_url!==null)
+        if ($this->_url !== null) {
             return (boolean)$this->sqs()->send($this->url, (string)$message, $options);
+        }
 
         return false;
     }
 
-    public function sendBatch($messageArray, $options=array())
+    public function sendBatch($messageArray, $options = [])
     {
         return $this->sqs()->sendBatch($this->url, $messageArray, $options);
     }
 
-    public function receiveBatch($items=10, $options=array())
+    public function receiveBatch($items = 10, $options = [])
     {
-        $options['MaxNumberOfMessages']=$items;
+        $options['MaxNumberOfMessages'] = $items;
+
         return $this->sqs()->receive($this->url, $options);
     }
 
-    public function receive($options=array())
+    public function receive($options = [])
     {
-        if($this->_url!==null)
+        if ($this->_url !== null) {
             return $this->sqs()->receive($this->url, $options);
+        }
 
         return null;
     }
 
-    public function delete($handle, $options=array())
+    public function delete($handle, $options = [])
     {
-        if($this->_url!==null)
+        if ($this->_url !== null) {
             return (boolean)$this->sqs()->delete($this->_url, $handle, $options);
+        }
 
         return false;
     }
 
-    public function deleteBatch($handles, $options = array()){
-        if($this->_url!==null)
+    public function deleteBatch($handles, $options = [])
+    {
+        if ($this->_url !== null) {
             return (boolean)$this->sqs()->deleteBatch($this->_url, $handles, $options);
+        }
 
         return false;
     }

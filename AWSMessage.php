@@ -1,4 +1,5 @@
 <?php
+
 class AWSMessage extends CModel
 {
 
@@ -6,12 +7,14 @@ class AWSMessage extends CModel
     const AWS_SENT_TIMESTAMP = 'SentTimestamp';
     const AWS_SENDER_ID = 'SenderId';
     /**
-     * @var mixed body of the message
+     * @var string
+     *   body of the message
      */
     public $body;
 
     /**
-     * @var string id of the message
+     * @var string
+     *   id of the message
      */
     public $id;
 
@@ -21,28 +24,38 @@ class AWSMessage extends CModel
     public $receiptHandle;
 
     /**
-     * @var string md5 of the message body
+     * @var string
+     *   md5 of the message body
      */
     public $md5;
     /**
-     * @var int Timestamp when the message was created
+     * @var int
+     *   Timestamp when the message was created
      */
     public $sentTimestamp;
 
     /**
-     * @var string The id of the sender
+     * @var string
+     *   The id of the sender
      */
     public $senderId;
 
 
     public function attributeNames()
     {
-        return array('body','id','receiptHandle','md5','sentTimestamp','senderId');
+        return [
+            'body',
+            'id',
+            'receiptHandle',
+            'md5',
+            'sentTimestamp',
+            'senderId',
+        ];
     }
 
     /**
      * Magic method to cast object to string
-     * 
+     *
      * @return string the message's body
      */
     public function __toString()
