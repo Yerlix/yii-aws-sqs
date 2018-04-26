@@ -1,5 +1,7 @@
 <?php
 
+namespace yerlix\AWSQueue;
+
 /**
  * AWSQueue
  */
@@ -41,6 +43,14 @@ class AWSQueue extends CModel
     public function getUrl()
     {
         return $this->_url;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->_name = $name;
     }
 
     /**

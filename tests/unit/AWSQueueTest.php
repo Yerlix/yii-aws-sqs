@@ -1,5 +1,7 @@
 <?php
 
+use yerlix\AWSQueue;
+
 class AWSQueueTest extends CTestCase
 {
     /**
@@ -14,7 +16,7 @@ class AWSQueueTest extends CTestCase
         ];
 
         foreach ($invalidCharacterNames as $name) {
-            $q->name = $name;
+            $q->setName($name);
             $this->assertFalse($q->validate());
         }
 

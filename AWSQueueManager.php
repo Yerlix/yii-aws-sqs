@@ -1,4 +1,7 @@
 <?php
+
+namespace yerlix\AWSQueueManager;
+
 Yii::import('ext.yii-aws-sqs.*');
 
 /**
