@@ -1,7 +1,5 @@
 <?php
 
-use yerlix\AWSQueue;
-
 class AWSQueueTest extends CTestCase
 {
     /**

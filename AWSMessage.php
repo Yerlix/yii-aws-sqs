@@ -1,7 +1,5 @@
 <?php
 
-namespace yerlix\AWSMessage;
-
 class AWSMessage extends CModel
 {
 

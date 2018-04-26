@@ -1,7 +1,5 @@
 <?php
 
-namespace yerlix\AWSQueue;
-
 /**
  * AWSQueue
  */
